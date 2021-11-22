@@ -22,6 +22,30 @@
         * {
             color: #fff;
         }
+
+        .function_name {
+            color: #61afef;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .var {
+            color: #d19a66;
+        }
+
+        .string {
+            color: #98c374;
+        }
+
+        .default_func {
+            color: #56b6c2;
+        }
+
+        .comment {
+            color: #7a848e;
+        }
     </style>
 </head>
 
@@ -63,6 +87,8 @@
         <ul>
             <li class="next">Рекурсия</li>
             <li class="next">Примеры рекурсивных алгоритмов</li>
+            <li class="next">Построение дерева рекурсии</li>
+            <li class="next">Реализация решения задач на теорию игр</li>
         </ul>
     </section>
 
@@ -81,11 +107,11 @@
         <h2 class="title">Нахождения факториала</h2>
 
         <pre>
-            <code>def factorial(n):</code>
-            <code class="mark">      if n == 0:</code>
-            <code class="mark">          return 1</code>
-            <code>      else:</code>
-            <code>          return n * factorial(n - 1)</code>
+            <code><span class="keyword">def</span> <span class="function_name">factorial</span>(<span class="var">n</span>):</code>
+            <code >      <span class="keyword">if</span> n <span class="default_func">==</span> <span class="var">0</span>:</code>
+            <code>          <span class="keyword">return</span> <span class="var">1</span></code>
+            <code>      <span class="keyword">else</span>:</code>
+            <code>          <span class="keyword">return</span> n <span class="default_func">*</span> <span class="function_name">factorial</span>(n <span class="default_func">-</span> <span class="var">1</span>)</code>
         </pre>
     </section>
 
@@ -93,22 +119,34 @@
         <h2 class="title">Нахождения факториала</h2>
 
         <pre>
-            <code>def factorial(n):</code>
-            <code>      if n == 0:</code>
-            <code>          return 1</code>
-            <code>      else:</code>
-            <code class="mark">          return n * factorial(n - 1)</code>
+            <code><span class="keyword">def</span> <span class="function_name">factorial</span>(<span class="var">n</span>):</code>
+            <code class="mark">      <span class="keyword">if</span> n <span class="default_func">==</span> <span class="var">0</span>:</code>
+            <code class="mark">          <span class="keyword">return</span> <span class="var">1</span></code>
+            <code>      <span class="keyword">else</span>:</code>
+            <code>          <span class="keyword">return</span> n <span class="default_func">*</span> <span class="function_name">factorial</span>(n <span class="default_func">-</span> <span class="var">1</span>)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="title">Нахождения факториала</h2>
+
+        <pre>
+            <code><span class="keyword">def</span> <span class="function_name">factorial</span>(<span class="var">n</span>):</code>
+            <code>      <span class="keyword">if</span> n <span class="default_func">==</span> <span class="var">0</span>:</code>
+            <code>          <span class="keyword">return</span> <span class="var">1</span></code>
+            <code>      <span class="keyword">else</span>:</code>
+            <code class="mark">          <span class="keyword">return</span> n <span class="default_func">*</span> <span class="function_name">factorial</span>(n <span class="default_func">-</span></M> <span class="var">1</span>)</code>
         </pre>
     </section>
 
     <section class="slide">
         <h2 class="title">Нахождение числа Фибоначчи</h2>
         <pre>
-            <code>def fib(n):</code>
-            <code>      if n <= 2:</code>
-            <code>          return 1</code>
-            <code>      else:</code>
-            <code>          return fib(n - 1) + fib(n - 2)</code>
+            <code><span class="keyword">def</span> <span class="function_name">fib</span>(<span class="var">n</span>):</code>
+            <code>      <span class="keyword">if</span> n <span class="default_func"><=</span> <span class="var">2</span>:</code>
+            <code>          <span class="keyword">return</span> <span class="var">1</span></code>
+            <code>      <span class="keyword">else</span>:</code>
+            <code>          <span class="keyword">return</span> <span class="function_name">fib</span>(n <span class="default_func">-</span> <span class="var">1</span>) <span class="default_func">+</span> <span class="function_name">fib</span>(n <span class="default_func">-</span> <span class="var">2</span>)</code>
         </pre>
     </section>
 
@@ -134,11 +172,11 @@
         В Python 3.5 появился инструмент для сохранения вычисленных веток рекурсии:
 
         <pre>
-            <code class="next mark">from functools import lru_cache</code>
+            <code class="next mark"><span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache</code>
             <code> </code>
-            <code class="next mark">@lru_cache(None)</code>
-            <code>def fib(n):</code>
-            <code>      ...</code>
+            <code class="next mark"><span class="function_name">@lru_cache</span>(<span class="var">None</span>)</code>
+            <code><span class="keyword">def</span> fib(<span class="var">n</span>):</code>
+            <code>      <span class="comment"># ...</span></code>
         </pre>
     </section>
 
@@ -168,34 +206,34 @@
         Для начала распишем все возможные ходы:
 
         <pre>
-            <code>def moves(h):</code>
-            <code>      a, b = h</code>
-            <code>      return (a + 3, b), (a, b + 3), (a * 2, b), (a, b * 2)</code>
+            <code><span class="keyword">def</span> <span class="function_name">moves</span>(<span class="var">h</span>):</code>
+            <code>      a, b <span class="default_func">=</span> h</code>
+            <code>      <span class="keyword">return</span> (a <span class="default_func">+</span> <span class="var">3</span>, b), (a, b <span class="default_func">+</span> <span class="var">3</span>), (a <span class="default_func">*</span> <span class="var">2</span>, b), (a, b <span class="default_func">*</span> <span class="var">2</span>)</code>
         </pre>
     </section>
 
     <section class="slide">
         <h2 class="title">Запрогаем задачу</h2>
         <pre>
-            <code>@lru_cache(None)</code>
-            <code>def game(h):</code>
-            <code>      if sum(h) >= 62:</code>
-            <code>          return "W"</code>
-            <code>      elif any(game(m) == "W" for m in moves(h)):</code>
-            <code>          return "P1"</code>
-            <code>      elif all(game(m) == "P1" for m in moves(h)):</code>
-            <code>          return "B1"</code>
+            <code><span class="function_name">@lru_cache</span>(<span class="var">None</span>)</code>
+            <code><span class="keyword">def</span> <span class="function_name">game</span>(<span class="var">h</span>):</code>
+            <code>      <span class="keyword">if</span> <span class="default_func">sum</span>(h) <span class="default_func">>=</span> <span class="var">62</span>:</code>
+            <code>          <span class="keyword">return</span> <span class="string">"W"</span></code>
+            <code>      <span class="keyword">elif</span> <span class="default_func">any</span>(<span class="function_name">game</span>(m) <span class="default_func">==</span> <span class="string">"W"</span> <span class="keyword">for</span> m <span class="keyword">in</span> <span class="function_name">moves</span>(h)):</code>
+            <code>          <span class="keyword">return</span> <span class="string">"P1"</span></code>
+            <code>      <span class="keyword">elif</span> <span class="default_func">all</span>(<span class="function_name">game</span>(m) <span class="default_func">==</span> <span class="string">"P1"</span> <span class="keyword">for</span> m <span class="keyword">in</span> <span class="function_name">moves</span>(h)):</code>
+            <code>          <span class="keyword">return</span> <span class="string">"B1"</span></code>
         </pre>
     </section>
 
     <section class="slide">
         <h2 class="title">Запрогаем задачу</h2>
         <pre>
-            <code># Продолжение game(h):</code>
-            <code>elif any(game(m) == "B1" for m in moves(h)):</code>
-            <code>      return "P2"</code>
-            <code>elif all(game(m) == "P1" or game(m) == "P2" for m in moves(h)):</code>
-            <code>      return "B2"</code>
+            <code><span class="comment"># Продолжение game(h):</span></code>
+            <code><span class="keyword">elif</span> <span class="default_func">any</span>(<span class="function_name">game</span>(m) <span class="default_func">==</span> <span class="string">"B1"</span> <span class="keyword">for</span> m <span class="keyword">in</span> <span class="function_name">moves</span>(h)):</code>
+            <code>      <span class="keyword">return</span> <span class="string">"P2"</span></code>
+            <code><span class="keyword">elif</span> <span class="default_func">all</span>(<span class="function_name">game</span>(m) <span class="default_func">==</span> <span class="string">"P1"</span> <span class="keyword">or</span> <span class="function_name">game</span>(m) <span class="default_func">==</span> <span class="string">"P2"</span> <span class="keyword">for</span> m <span class="keyword">in</span> <span class="function_name">moves</span>(h)):</code>
+            <code>      <span class="keyword">return</span> <span class="string">"B2"</span></code>
         </pre>
     </section>
 
@@ -204,10 +242,10 @@
         Переберем значения S из условия:
 
         <pre>
-            <code>for s in range(1, 55):</code>
-            <code>      h = (7, s)</code>
-            <code>      if game(h) is not None:</code>
-            <code>          print(game(h), s)</code>
+            <code><span class="keyword">for</span> s <span class="keyword">in</span> <span class="default_func">range</span>(<span class="var">1</span>, <span class="var">55</span>):</code>
+            <code>      h <span class="default_func">=</span> <span class="default_func">(</span><span class="var">7</span>, s<span class="default_func">)</span></code>
+            <code>      <span class="keyword">if</span> <span class="function_name">game</span>(h) <span class="keyword">is not None</span>:</code>
+            <code>          <span class="default_func">print</span>(<span class="function_name">game</span>(h), s)</code>
         </pre>
     </section>
 
