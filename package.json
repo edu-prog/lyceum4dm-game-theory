@@ -1,17 +1,19 @@
 {
+  "homepage": "http://edu-prog.github.io/lyceumd4dm-game-theory",
   "private": true,
   "scripts": {
     "pdf": "shower pdf",
     "serve": "shower serve",
     "zip": "shower bundle && ./generate.sh && zip -r presentation.zip bundled/ && rm -rf bundled",
     "bundle": "shower bundle && ./generate.sh",
-    "publish": "shower bundle"
+    "publish-bundle": "./generate.sh && gh-pages -d bundled"
   },
   "dependencies": {
     "@shower/core": "^3.3.0",
     "eduprog-theme": "git://github.com/edu-prog/presentation-theme"
   },
   "devDependencies": {
-    "@shower/cli": "^0.3.1"
+    "@shower/cli": "^0.3.1",
+    "gh-pages": "^3.2.3"
   }
 }
