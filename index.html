@@ -46,6 +46,18 @@
         .comment {
             color: #7a848e;
         }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .list-item span {
+            margin-right: 40px;
+            font-size: 40px;
+            font-weight: 700;
+            color: #006be7;
+        }
     </style>
 </head>
 
@@ -58,7 +70,7 @@
 
     <section class="slide">
         <h1 style="position: absolute; top: 50%; transform: translateY(-50%); font-size: 4rem; margin: 0; color: #fff;">Теория игр без боли</h1>
-        <p style="position: absolute; top: 70%; color: #808093;">Свиридов Василий<br><a>sviridov@eduprog.ru</a></p>
+        <p style="position: absolute; top: 70%; color: #808093;">Свиридов Василий<br><a>vasily-sviridov@yandex-team.ru</a></p>
 
         <span style="font-size: 200px; color: #0077fc; font-weight: 1000; position: absolute; right: 4rem; top: -60px">
             ++
@@ -84,12 +96,22 @@
     <section class="slide">
         <h2 class="title">Содержание</h2>
 
-        <ul>
-            <li class="next">Рекурсия</li>
-            <li class="next">Примеры рекурсивных алгоритмов</li>
-            <li class="next">Построение дерева рекурсии</li>
-            <li class="next">Реализация решения задач на теорию игр</li>
-        </ul>
+        <span style="position: absolute; font-size: 200px; top: -100px; right: 75px; color: #1c1c51; font-weight: 700">+</span>
+        
+        <span style="position: absolute; font-size: 200px; top: -60px; right: 170px; color: #1c1c51; font-weight: 700">+</span>
+
+        <div class="list-item next">
+            <span>01</span> Рекурсия
+        </div>
+        <div class="list-item next">
+            <span>02</span> Примеры рекурсивных алгоритмов
+        </div>
+        <div class="list-item next">
+            <span>03</span> Построение дерева рекурсии
+        </div>
+        <div class="list-item next">
+            <span>04</span> Реализация решения задач на теорию игр
+        </div>
     </section>
 
     <section class="slide">
@@ -250,7 +272,128 @@
     </section>
 
     <section class="slide">
+        <h2 class="title">Посмотрим на вывод программы</h2>
         
+        <ul>
+            <li>P2 13</li>
+            <li>B2 20</li>
+            <li>B2 22</li>
+            <li>P2 23</li>
+            <li>P2 24</li>
+            <li>P2 25</li>
+            <li>B1 26</li>
+            <li>...</li>
+        </ul>
+
+    </section>
+
+    <section class="slide">
+        <h2 class="title">Что нам нужно было найти?)</h2>
+
+        <div class="columns two">
+            <ul>
+                <li>19. B1, при неудачном ходе P</li>
+                <li>20. min(P2)</li>
+                <li>21. 2 ∃s = B2</li>
+            </ul>
+
+            <ul>
+                <li>P2 13</li>
+                <li>B2 20</li>
+                <li>B2 22</li>
+                <li>P2 23</li>
+                <li>P2 24</li>
+                <li>P2 25</li>
+                <li>B1 26</li>
+                <li>...</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="title">А как быть с неудачным ходом Первого игрока?</h2>
+
+        Рассмотрим, как мы формируем выигрышные стратегии P1:
+        <div class="spotlight next" style="
+        --spotlight-radius: 50%;
+        --spotlight-opacity: 0.2;
+        --spotlight-size: 100px;
+        top: 48%;
+        left: 280px;
+        opacity: 0.2;
+        background-color: #0020ff;
+    "></div>
+        <pre>
+            <code>      <span class="keyword">elif</span> <span class="default_func">all</span>(<span class="function_name">game</span>(m) <span class="default_func">==</span> <span class="string">"P1"</span> <span class="keyword">for</span> m <span class="keyword">in</span> <span class="function_name">moves</span>(h)):</code>
+            <code>          <span class="keyword">return</span> <span class="string">"B1"</span></code>
+        </pre>
+
+        Заменим "all" на "any":
+
+        <pre>
+            <code>      <span class="keyword">elif</span> <span class="default_func">any</span>(<span class="function_name">game</span>(m) <span class="default_func">==</span> <span class="string">"P1"</span> <span class="keyword">for</span> m <span class="keyword">in</span> <span class="function_name">moves</span>(h)):</code>
+            <code>          <span class="keyword">return</span> <span class="string">"B1"</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="title">Output</h2>
+
+        <ul>
+            <li>...</li>
+            <li>P2 10</li>
+            <li>P2 11</li>
+            <li>P2 12</li>
+            <li>P2 13</li>
+            <li>B1 14</li>
+            <li>B1 15</li>
+            <li>...</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="title">Решите аналогичную задачу</h2>
+        <ul>
+            <li>19. min(S) = B1</li>
+            <li>20. 2 ∃s = P2</li>
+            <li>21. count(B2)</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="title">Решите аналогичную задачу</h2>
+        32)	(А. Носкин) За один ход игрок может <b>добавить в одну из куч один камень</b> или <b>увеличить количество камней в куче в два раза</b>. Игра завершается в тот момент, когда суммарное количество камней в кучах становится не менее <b>40</b>. Победителем считается игрок, сделавший последний ход, т.е. первым получивший такую позицию, при которой в кучах будет <b>40</b> или больше камней. В начальный момент в первой куче было <b>9</b> камней, во второй куче – S камней; <b></b>1 ≤ S ≤ 30</b>.
+    </section>
+
+    <section class="slide">
+        <h2 class="title">Ответы</h2>
+        
+        <ul>
+            <li>19. <b>4</b></li>
+            <li>20. <b>3 14</b></li>
+            <li>21. <b>0</b></li>
+        </ul>
+
+        Также, вы можете посмотреть моё решение этой задачи:
+
+        <a href="https://re.eduprog.ru/l/1">re.eduprog.ru/l/1</a>
+    </section>
+
+    <section class="slide">
+        <div class="columns two" style="display: flex; height: calc(100% - 80px); align-items: center; justify-content: space-between;">
+            <div>
+                <h1 style="font-size: 40px; margin: 5px 0;">Свиридов Василий</h1>
+                <h1 style="font-size: 26px; font-weight: 400; margin: 5px 0; margin-bottom: 40px;">Разработчик Yandex.Clickhouse</h2>
+                
+                <a href="">vasily-sviridov@yandex-team.ru</a>
+                <a href="">sviridov@eduprog.ru</a>
+            </div>
+
+            <div style="display: flex; flex-direction: column;">
+                <div style="text-align: center;">Презентация:</div>
+                <img style="width: 300px;" src="https://cdn.eduprog.ru/img/qr-code.png" alt="link to presentation">
+            </div>
+        </div>
     </section>
 
     <footer class="badge">
